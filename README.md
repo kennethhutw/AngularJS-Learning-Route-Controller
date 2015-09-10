@@ -1,35 +1,36 @@
 //Define an angular module for our app
-var sampleApp = angular.module('sampleApp', []);
+var sampleApp = angular.module('sampleApp', ['HomeApp','MemberApp']);
 
+/*
+	** Todo-Sortable-List Example App
+	** Licensed under the Apache License v2.0
+	** http://www.apache.org/licenses/LICENSE-2.0
+	** Built by Kenneth Hu (Kenneth_hu@hotmail.com)
+	*/
 //Define Routing for app
-//Uri /AddNewOrder -> template AddOrder.html and Controller AddOrderController
-//Uri /ShowOrders -> template ShowOrders.html and Controller AddOrderController
+//Uri /Home -> template Home.html and Controller HomeCtrl
+//Uri /Alan -> template Alan.html and Controller AlanCtrl
+//Uri /Bill -> template Bill.html and Controller BillCtrl
 sampleApp.config(['$routeProvider',
   function($routeProvider) {
     $routeProvider.
-      when('/AddNewOrder', {
-	templateUrl: 'templates/add_order.html',
-	controller: 'AddOrderController'
+      when('/Alan', {
+	templateUrl: 'templates/Alan.html',
+	controller: 'AlanCtrl'
       }).
-      when('/ShowOrders', {
-	templateUrl: 'templates/show_orders.html',
-	controller: 'ShowOrdersController'
+      when('/Bill', {
+	templateUrl: 'templates/Bill.html',
+	controller: 'BillCtrl'
+      }).
+	 when('/', {
+	templateUrl: 'home.html',
+	controller: 'HomeCtrl'
+      }).
+	   when('/Home', {
+	templateUrl: 'Home.html',
+	controller: 'HomeCtrl'
       }).
       otherwise({
-	redirectTo: '/AddNewOrder'
+	redirectTo: '/'
       });
 }]);
-
-
-sampleApp.controller('AddOrderController', function($scope) {
-	
-	$scope.message = 'This is Add new order screen';
-	
-});
-
-
-sampleApp.controller('ShowOrdersController', function($scope) {
-
-	$scope.message = 'This is Show orders screen';
-
-});
